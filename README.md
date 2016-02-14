@@ -1,1 +1,3 @@
-# Setting
+# Settings
+
+The Settings Component.
