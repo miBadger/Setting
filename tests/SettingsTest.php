@@ -102,7 +102,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
 		$path = vfsStream::url('test' . DIRECTORY_SEPARATOR . '.settings.json');
 
 		$this->assertTrue((bool) file_put_contents($path, '{"key": "value2"}'));
-		$this->settings->load($path);
+		$this->assertEquals($this->settings, $this->settings->load($path));
 		$this->assertEquals('value2', $this->settings->get('key'));
 	}
 
@@ -148,9 +148,9 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
 
 		// Succes
 		$this->settings->set('key', 'value2');
-		$this->settings->save($path);
-		$this->settings->clear();
-		$this->settings->load($path);
+		$this->assertEquals($this->settings, $this->settings->save($path));
+		$this->assertEquals($this->settings, $this->settings->clear());
+		$this->assertEquals($this->settings, $this->settings->load($path));
 		$this->assertEquals('value2', $this->settings->get('key'));
 	}
 }

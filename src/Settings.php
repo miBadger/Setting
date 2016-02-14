@@ -167,5 +167,7 @@ class Settings implements \IteratorAggregate
 		$file = new File($path);
 
 		$file->write(json_encode($this->data));
+
+		return $this;
 	}
 }
