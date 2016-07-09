@@ -117,7 +117,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
 		vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
 		$path = vfsStream::url('test' . DIRECTORY_SEPARATOR . Settings::DEFAULT_FILENAME);
 
-		$this->settings->load($path);
+		@$this->settings->load($path);
 	}
 
 	/**
