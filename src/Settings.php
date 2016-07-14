@@ -25,7 +25,7 @@ class Settings implements \IteratorAggregate
 	private $data;
 
 	/**
-	 * Contruct a settings object with the given data.
+	 * Construct a settings object with the given data.
 	 *
 	 * @param $data = []
 	 */
