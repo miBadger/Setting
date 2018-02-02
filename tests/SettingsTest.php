@@ -15,12 +15,14 @@ use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamFile;
 use org\bovigo\vfs\vfsStreamWrapper;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * The settings test class.
  *
  * @since 1.0.0
  */
-class SettingsTest extends \PHPUnit_Framework_TestCase
+class SettingsTest extends TestCase
 {
 	/** @var array The data. */
 	private $data;
