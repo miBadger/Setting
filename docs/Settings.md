@@ -7,7 +7,7 @@ The settings class.
 ```php
 <?php
 
-use miBadger/Settings/Settings;
+use miBadger\Settings\Settings;
 
 /**
  * Contruct a settings object with the given data.
