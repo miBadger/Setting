@@ -29,7 +29,7 @@ class SettingsTest extends TestCase
 	/** @var Settings The settings. */
 	private $settings;
 
-	public function setUp()
+	public function setUp(): void
 	{
 		$this->data = ['key' => 'value'];
 		$this->settings = new Settings($this->data);
@@ -109,11 +109,12 @@ class SettingsTest extends TestCase
 
 	/**
 	 * @depends testLoad
-	 * @expectedException miBadger\File\FileException
-	 * @expectedExceptionMessage Can't read the content.
 	 */
 	public function testLoadFileException()
 	{
+		$this->expectException(\miBadger\File\FileException::class);
+		$this->expectExceptionMessage("Can't read the content.");
+
 		vfsStreamWrapper::register();
 		vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
 		$path = vfsStream::url('test' . DIRECTORY_SEPARATOR . Settings::DEFAULT_FILENAME);
@@ -123,11 +124,12 @@ class SettingsTest extends TestCase
 
 	/**
 	 * @depends testLoad
-	 * @expectedException UnexpectedValueException
-	 * @expectedExceptionMessage Invalid JSON.
 	 */
 	public function testLoadUnexpectedValueException()
 	{
+		$this->expectException(\UnexpectedValueException::class);
+		$this->expectExceptionMessage("Invalid JSON.");
+
 		vfsStreamWrapper::register();
 		vfsStreamWrapper::setRoot(new vfsStreamDirectory('test'));
 		vfsStreamWrapper::getRoot()->addChild(new vfsStreamFile('.settings.json'));
